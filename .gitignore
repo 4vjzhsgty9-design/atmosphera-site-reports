@@ -43,3 +43,13 @@ next-env.d.ts
 # browser test artifacts
 /test-results/
 /playwright-report/
+
+# Local Supabase CLI and generated development state
+.tools/
+supabase/.temp/
+supabase/.branches/
+!.env.example
+
+/test-results-boundary/
+/test-results-connected/
+/.env.test.local

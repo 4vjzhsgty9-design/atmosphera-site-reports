@@ -1,4 +1,9 @@
-import { Workspace } from "@/components/workspace";
+import { Suspense } from "react";
+import { WorkspaceGateway } from "@/components/workspace-gateway";
 export default function Home() {
-  return <Workspace screen="dashboard" />;
+  return (
+    <Suspense fallback={<p className="empty">Loading workspace…</p>}>
+      <WorkspaceGateway screen="dashboard" />
+    </Suspense>
+  );
 }

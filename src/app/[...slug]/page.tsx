@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Workspace } from "@/components/workspace";
+import { WorkspaceGateway } from "@/components/workspace-gateway";
 import { Suspense } from "react";
 type Props = { params: Promise<{ slug: string[] }> };
 export default function Page({ params }: Props) {
@@ -24,5 +24,5 @@ async function ResolvedPage({ params }: Props) {
     )
   )
     notFound();
-  return <Workspace screen={screen} />;
+  return <WorkspaceGateway screen={screen} />;
 }

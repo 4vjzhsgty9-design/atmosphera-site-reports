@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { DemoProvider } from "@/components/demo-provider";
+import { Suspense } from "react";
+import { connection } from "next/server";
+import { appMode } from "@/lib/auth/config";
 export const metadata: Metadata = {
   title: "Atmosphera Site Reports",
   description:
@@ -16,8 +19,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <DemoProvider>{children}</DemoProvider>
+        <Suspense fallback={<p className="empty">Loading Atmosphera…</p>}>
+          <RuntimeProviders>{children}</RuntimeProviders>
+        </Suspense>
       </body>
     </html>
+  );
+}
+
+async function RuntimeProviders({ children }: { children: React.ReactNode }) {
+  await connection();
+  return appMode() === "demo" ? (
+    <DemoProvider>{children}</DemoProvider>
+  ) : (
+    children
   );
 }

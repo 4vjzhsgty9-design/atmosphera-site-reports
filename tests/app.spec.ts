@@ -66,9 +66,9 @@ test("draft autosaves with a photo and can be submitted, returned and approved",
   const path = new URL(page.url()).pathname;
   expect(path).not.toBe("/daily-reports/new");
   await page.reload();
-  await expect(page.getByRole("textbox", { name: "Site manager *", exact: true })).toHaveValue(
-    "Test Site Manager",
-  );
+  await expect(
+    page.getByRole("textbox", { name: "Site manager *", exact: true }),
+  ).toHaveValue("Test Site Manager");
   await expect(page.getByAltText("East wing reinforcement")).toBeVisible();
   await page.getByRole("button", { name: "Submit for approval" }).click();
   await expect(
@@ -137,9 +137,9 @@ test("approved reports create separate editable revisions without altering origi
     .getByRole("textbox", { name: "Site manager *", exact: true })
     .fill("Revision manager");
   await page.goto("/daily-reports/dsr-001");
-  await expect(page.getByRole("textbox", { name: "Site manager *", exact: true })).toHaveValue(
-    "Aditya Putra",
-  );
+  await expect(
+    page.getByRole("textbox", { name: "Site manager *", exact: true }),
+  ).toHaveValue("Aditya Putra");
   await expect(
     page.getByRole("textbox", { name: "Site manager *", exact: true }),
   ).toBeDisabled();

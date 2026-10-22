@@ -9,12 +9,25 @@
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "db:install": "bash scripts/install-supabase-cli.sh",
+    "db:start": ".tools/supabase start --exclude studio,imgproxy,edge-runtime,logflare,vector,supavisor,realtime",
+    "db:stop": ".tools/supabase stop",
+    "db:test": ".tools/supabase test db",
+    "db:reset": ".tools/supabase db reset",
+    "bootstrap:director": "node --env-file=.env.local scripts/bootstrap-director.mjs",
+    "test:boundary": "playwright test --config=playwright.boundary.config.ts",
+    "test:connected": "playwright test --config=playwright.connected.config.ts",
+    "db:test-env": "node scripts/local-test-env.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.118.0",
     "next": "16.4.2",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",

@@ -128,3 +128,20 @@ transitions to the server; freeze released monthly source data; add validated
 Excel schedule imports with explicit PM confirmation and PDF appendices; implement
 background PDF generation, actual user/project administration and an offline PWA.
 Do not deploy or enable paid services without the owner's confirmation.
+
+## Phase 2 / Stage 1: Supabase access foundation
+
+The original demo remains the default (`APP_MODE=demo`). Stage 1 adds a separate
+`connected` mode with server-verified employee sign-in, three database roles,
+project RLS, private Storage policies, Director project/employee administration
+and project assignment. No real data is seeded and no deployment is performed.
+
+Start with the [beginner-friendly Supabase guide in Russian](docs/supabase-setup-ru.md).
+The [security boundary and test commands](docs/stage-1-security.md) describe what
+is verified and what remains deliberately disabled. Connected daily-report
+persistence is **Stage 2**, which requires the owner's separate approval.
+
+The legacy prototype limitations above describe **demo mode**. In connected mode,
+roles cannot be selected by the user, records come only from Supabase, and missing
+configuration does not load demo data. Original logo assets and PDF references
+are still reserved for the later PDF/branding stage.
